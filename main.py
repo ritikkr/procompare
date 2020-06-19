@@ -5,8 +5,9 @@
 import argparse
 import amazon
 
+
 def main():
-    """Driver of 'procompare' app"""
+    """Driver code for 'procompare' app"""
 
     parser = argparse.ArgumentParser(description="Check Amazon's stock for product")
     parser.add_argument("product", help="name of the product")
