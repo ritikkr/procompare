@@ -19,5 +19,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("i've added nothing in this")
-    print("kvjk")
+    print("i've resolved my VSC issue"))
