@@ -19,4 +19,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("i've resolved my VSC issue"))
+    print("i've resolved my VSC issue")
