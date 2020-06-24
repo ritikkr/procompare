@@ -41,6 +41,6 @@ def test_flipkart_get_product():
             continue
         else:
             print("flipkart test failed for search term " + item)
-            exit()
-            
+            exit()      
+           
 test_flipkart_get_product()
