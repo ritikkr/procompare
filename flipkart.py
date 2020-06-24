@@ -44,3 +44,4 @@ def get_products(search_item):
     products_details = _get_product_details(products)
 
     return products_details
+
