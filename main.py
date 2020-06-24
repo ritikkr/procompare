@@ -3,18 +3,21 @@
 
 
 import argparse
-import amazon
+import flipkart
 
 
 def main():
     """Driver code for 'procompare' app"""
 
-    parser = argparse.ArgumentParser(description="Check Amazon's stock for product")
+    parser = argparse.ArgumentParser(
+        description="compare prices of product from different sites"
+    )
     parser.add_argument("product", help="name of the product")
 
     args = parser.parse_args()
 
-    print(amazon.in_stock(args.product))
+    for product in flipkart.get_products(args.product):
+        print(product)
 
 
 if __name__ == "__main__":
