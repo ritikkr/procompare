@@ -9,9 +9,7 @@ import flipkart
 def main():
     """Driver code for 'procompare' app"""
 
-    parser = argparse.ArgumentParser(
-        description="compare prices of product from different sites"
-    )
+    parser = argparse.ArgumentParser(description="compare prices of product from different sites")
     parser.add_argument("product", help="name of the product")
 
     args = parser.parse_args()
@@ -22,5 +20,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-      
