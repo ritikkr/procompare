@@ -42,5 +42,14 @@ def test_flipkart_get_product():
         else:
             print("flipkart test failed for search term " + item)
             exit()      
-           
+def test_amazon_get_product():
+    for item in search_terms:
+        if amazon.get.proudcts(item):
+            #product found
+            continue
+        else:
+            print("Amazon test failed for search term "+item)
+            exit()
+
 test_flipkart_get_product()
+test_amazon_get_product()

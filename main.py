@@ -4,6 +4,7 @@
 
 import argparse
 import flipkart
+import amazon
 
 
 def main():
