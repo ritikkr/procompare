@@ -1,54 +1,58 @@
-"""Function related to Flipkart website for scraping data."""
+"""Function related to Amazon website for scraping data."""
+
+
+import re
 from bs4 import BeautifulSoup
-from tabulate import tabulate
 import requests
-from urllib.parse import quote
 
-def __get_product_details(product_soup,only_one):
-    product_details_array = []
-    prev_name = ""
-    for product in product_soup:
-     
-        product_details = dict()
-        
-        product_name_tag = product.find('span', {'class': 'a-size-medium a-color-base a-text-normal'}) 
-        name = product_details['name'] = product_name_tag.text if product_name_tag else ""
-       
-        
-        product_price_tag = product.find("span", {"class": "a-price-whole"})
-        product_details['price'] = product_price_tag.text if product_price_tag else ""
-        
-        
-        product_rating_tag = product.find("span", {"class": "a-icon-alt"})
-        product_details['rating'] = product_rating_tag.text if product_rating_tag else "Assured"
+from product import Product
 
-        if(product_name_tag is None or  prev_name == name ):
-            continue
-        product_details_array.append(product_details)
-        prev_name = name
+def _trim_rating_text(rating_text):
+    return re.compile("[0-9][.][0-9]").match(rating_text).group()
+
+def _trim_link_text(link_text):
+    return link_text[0:link_text.rfind('/')]
+
+
+def _product_from_product_tag(product_tag):
+    name_tag = product_tag.find(
+        "span", attrs={"class": "a-size-medium a-color-base a-text-normal"}
+    )
+    price_tag = product_tag.find("span", attrs={"class": "a-offscreen"})
+    rating_tag = product_tag.find("span", attrs={"class": "a-icon-alt"})
+    link_tag = product_tag.find("a", attrs={"class": "a-link-normal a-text-normal"})
+
+    name = name_tag.text if name_tag else "unknown-product"
+    price = price_tag.text if price_tag else "0.0"
+    rating = _trim_rating_text(rating_tag.text) if rating_tag else "0.0"
+    link = "https://amazon.in"
+    link += _trim_link_text(link_tag.get("href")) if link_tag else ""
+
+    return Product(name, price, rating, link)
+
+
+def product_array_from_product_soup(product_soup, only_one):
+    products = []
+
+    for product_tag in product_soup:
+        product = _product_from_product_tag(product_tag)
+        products.append(product)
 
         if only_one:
             break
-        
-    return (product_details_array)
-    
-def __make_products_soup(url):
-    req = requests.get(url)
-    soup = BeautifulSoup(req.text, "lxml")
-    #soup = BeautifulSoup(amazon.html, "html.parser")
-    
-    product_soup = soup.select('div.s-main-slot,div.s-result-list,div.s-search-results,div.sg-row')
-    return product_soup
-    
-def __make_url(search_item):
-    
-    url= "https://www.amazon.in/s?k="+((search_item.split(" ")).join("+"))
-    return url
-    
-def get_products(search_item, only_one=False):
-    """Returns an array containing Product class instance."""
-    
-    url = __make_url(search_item)
-    soup = __make_products_soup(url)
 
-    return __get_product_details(soup,only_one)
+    return products
+
+
+def make_products_soup(url, headers):
+    soup = BeautifulSoup(requests.get(url, headers=headers).text, "lxml")
+    return soup.findAll(
+        "div",
+        attrs={
+            "class": "sg-col-4-of-12 sg-col-8-of-16 sg-col-16-of-24 sg-col-12-of-20 sg-col-24-of-32 sg-col sg-col-28-of-36 sg-col-20-of-28"
+        },
+    )
+
+
+def make_url(search_item):
+    return "https://www.amazon.in/s?k=" + "+".join(search_item.split())
