@@ -7,11 +7,13 @@ import requests
 
 from product import Product
 
+
 def _trim_rating_text(rating_text):
     return re.compile("[0-9][.][0-9]").match(rating_text).group()
 
+
 def _trim_link_text(link_text):
-    return link_text[0:link_text.rfind('/')]
+    return link_text[0 : link_text.rfind("/")]
 
 
 def _product_from_product_tag(product_tag):
@@ -23,12 +25,12 @@ def _product_from_product_tag(product_tag):
     link_tag = product_tag.find("a", attrs={"class": "a-link-normal a-text-normal"})
 
     name = name_tag.text if name_tag else "unknown-product"
-    price = price_tag.text if price_tag else "0.0"
-    rating = _trim_rating_text(rating_tag.text) if rating_tag else "0.0"
+    price = price_tag.text if price_tag else "Out of Stock"
+    rating = _trim_rating_text(rating_tag.text) if rating_tag else "Amazon Assured"
     link = "https://amazon.in"
     link += _trim_link_text(link_tag.get("href")) if link_tag else ""
 
-    return Product(name, price, rating, link)
+    return Product(name, price, rating)
 
 
 def product_array_from_product_soup(product_soup, only_one):

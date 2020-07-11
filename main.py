@@ -19,7 +19,7 @@ def main():
 
     for product in sch.get_products(flipkart, args.product):
         print(product)
-
+    
 
 if __name__ == "__main__":
     main()
