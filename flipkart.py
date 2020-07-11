@@ -19,8 +19,8 @@ def _product_from_product_tag(product_tag):
     rating_tag = product_tag.find("div", {"class": "hGSR34"})
 
     name = name_tag.text if name_tag else "unknown-product"
-    price = price_tag.text if price_tag else "0.0"
-    rating = rating_tag.text if rating_tag else "0.0"
+    price = price_tag.text if price_tag else "Out of Stock"
+    rating = rating_tag.text if rating_tag else "Flipkart Assured"
 
     return Product(name, price, rating)
 
