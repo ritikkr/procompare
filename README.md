@@ -11,7 +11,7 @@ python main.py "Product_name"
 python main.py "Redmi"
 Output:
 
-Flipkart Result
+Flipkart Result <br>
 [ 1 ]  Name: Redmi 8 (Sapphire Blue, 64 GB), Price: ₹9,799, Rating: 4.4
 
 [ 2 ]  Name: Redmi 8 (Onyx Black, 64 GB), Price: ₹9,799, Rating: 4.4
