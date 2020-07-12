@@ -1,6 +1,6 @@
-
 class Product:
     """Represent the product scraped from websites."""
+
     def __init__(self, name, price, rating, link=""):
         self.name = name
         self.price = price
