@@ -31,9 +31,9 @@ def main():
     amazon_product = [amazon_result[0].name,amazon_result[0].price,amazon_result[0].rating]
     flipkart_product = [flipkart_result[choice-1].name,flipkart_result[choice-1].price,flipkart_result[choice-1].rating]
     comparison_result = [amazon_product,flipkart_product]
-    rowIDs =[1,2]
+    rowIDs =["Amazon :","Flipkart :"]
     print("\n\n\t\t COMPARISON RESULT ")
-    print(tabulate(comparison_result, headers=["Item","Amazon","Flipkart"],showindex=rowIDs,tablefmt="grid"))
+    print(tabulate(comparison_result, headers=["Item","Price","Rating"],showindex=rowIDs,tablefmt="grid"))
     
 if __name__ == "__main__":
     main()
