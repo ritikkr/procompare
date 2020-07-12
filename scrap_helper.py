@@ -1,6 +1,6 @@
 """Contains helpers functions to scrap products."""
 
-
+import sys
 def get_products(website_module, search_item, only_one=False):
     """Returns array of products using given search item."""
     url = website_module.make_url(search_item)
@@ -13,7 +13,9 @@ def get_products(website_module, search_item, only_one=False):
         "Connection": "close",
         "Upgrade-Insecure-Requests": "1",
     }
-
-    product_soup = website_module.make_products_soup(url, headers)
-
+    try:
+        product_soup = website_module.make_products_soup(url, headers)
+    except Exception:
+        print("!!!Please check your network connection")
+        sys.exit(0)
     return website_module.product_array_from_product_soup(product_soup, only_one)
