@@ -5,10 +5,11 @@ compare the product with different online store and buy the best one
 pip install -r requirements.txt
 
 # Uses
-python main.py "Product_name"
+python main.py
 
 # Example
-python main.py "Redmi"
+python main.py 
+Enter product name: Redmi
 Output:
 
 Flipkart Result <br>
