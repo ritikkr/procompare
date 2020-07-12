@@ -7,6 +7,7 @@ import amazon
 import flipkart
 import scrap_helper as sch
 import sys
+import os
 
 def main():
     """Driver code for 'procompare' app"""
@@ -24,8 +25,8 @@ def main():
     choice = int(input())
     print("------------------------------------------------")
     amazon_result = sch.get_products(amazon, flipkart_result[choice-1].name)
-    if (amazon_result == 0):
-        print("!!!No particular product found on Amazon")
+    if (len(amazon_result) == 0):
+        print("!!!No particular product found on Amazon\n\n")
         sys.exit(0)
     amazon_product = [amazon_result[0].name,amazon_result[0].price,amazon_result[0].rating]
     flipkart_product = [flipkart_result[choice-1].name,flipkart_result[choice-1].price,flipkart_result[choice-1].rating]
@@ -33,6 +34,17 @@ def main():
     rowIDs =["Amazon :","Flipkart :"]
     print("\n\n\t\t COMPARISON RESULT ")
     print(tabulate(comparison_result, headers=["Item","Price","Rating"],showindex=rowIDs,tablefmt="grid"))
-    
+    print("\n\n------------------------------------------------------------------------")
+    ch = input("Do you want to search for Another Product(y or n): ").lower()
+    print("------------------------------------------------------------------------")
+    if (ch == 'y' or ch == 'yes'):
+        os.system('cls')
+        main()
+    else:
+        print("\n\n\t\t Thank You for Visit :-)\n\n")
+
 if __name__ == "__main__":
     main()
+   
+
+    
