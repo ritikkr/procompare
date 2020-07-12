@@ -1,6 +1,8 @@
 """Contains helpers functions to scrap products."""
 
 import sys
+
+
 def get_products(website_module, search_item, only_one=False):
     """Returns array of products using given search item."""
     url = website_module.make_url(search_item)
