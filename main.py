@@ -12,7 +12,7 @@ def main():
     """Driver code for 'procompare' app"""
 
     print(
-        "-----------------------------------compare prices of product from different sites------------------------------------------"
+        "-----------------------------------compare prices of product from different sites---------------------------------------"
     )
     product_name = input("Enter Product Name: ")
     serial_no = 1
@@ -27,13 +27,18 @@ def main():
     print("------------------------------------------------")
     amazon_result = sch.get_products(amazon, flipkart_result[choice - 1].name)
     if len(amazon_result) == 0:
-        print("!!!No particular product found on Amazon\n\n")
-        sys.exit(0)
-    amazon_product = [
-        amazon_result[0].name,
-        amazon_result[0].price,
-        amazon_result[0].rating,
-    ]
+        print("No particular product found on Amazon!!! Data may be shown for Flipkart only\n\n")
+        amazon_product = [
+            "None",
+            "-",
+            "-",
+        ]
+    else:
+        amazon_product = [
+            amazon_result[0].name,
+            amazon_result[0].price,
+            amazon_result[0].rating,
+        ]
     flipkart_product = [
         flipkart_result[choice - 1].name,
         flipkart_result[choice - 1].price,
