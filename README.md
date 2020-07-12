@@ -13,8 +13,11 @@ Output:
 
 Flipkart Result
 [ 1 ]  Name: Redmi 8 (Sapphire Blue, 64 GB), Price: ₹9,799, Rating: 4.4
+
 [ 2 ]  Name: Redmi 8 (Onyx Black, 64 GB), Price: ₹9,799, Rating: 4.4
+
 [ 3 ]  Name: Redmi K20 Pro (Flame Red, 128 GB), Price: ₹24,999, Rating: 4.5
+
 [ 4 ]  Name: Redmi Note 8 (Moonlight White, 128 GB), Price: ₹16,499, Rating: 4.4
 [ 5 ]  Name: Redmi K20 Pro (Carbon Black, 128 GB), Price: ₹24,999, Rating: 4.5
 [ 6 ]  Name: Redmi K20 Pro (Glacier Blue, 128 GB), Price: ₹24,999, Rating: 4.5
