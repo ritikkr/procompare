@@ -1,14 +1,21 @@
 # procompare
-compare the product with different online store and buy the best one
+Compare the product with different online store and buy the best one
 
 # Requirements
+```
 pip install -r requirements.txt
+```
 
 # Uses
+```
 python main.py
+```
 
 # Example
-python main.py 
+```
+python main.py
+```
+```
 Enter product name: Redmi
 Output:
 
@@ -66,8 +73,7 @@ Select a Product (1- 24 ) :  1
 ------------------------------------------------
 
 
-                 COMPARISON RESULT
-```            
+                 COMPARISON RESULT         
 +------------+---------------------------------------------------------+--------------+----------+
 |            | Item                                                    | Price        |   Rating |
 +============+=========================================================+==============+==========+
