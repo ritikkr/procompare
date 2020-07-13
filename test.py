@@ -41,24 +41,24 @@ def test_flipkart_get_product():
     """
     Testing products on flipkart module
     """
+    print("Flipkart")
     for item in search_terms:
         if scrap_helper.get_products(flipkart, item):
-            pass
+            print("pass")
         else:
             print("flipkart test failed for search term " + item)
-            sys.exit(0)
 
 
 def test_amazon_get_product():
     """ 
     Testing products on amazon module
     """
+    print("Amazon")
     for item in search_terms:
         if scrap_helper.get_products(amazon, item):
-            pass
+            print("pass")
         else:
             print("Amazon test failed for search term " + item)
-            sys.exit(0)
 
 
 test_flipkart_get_product()
